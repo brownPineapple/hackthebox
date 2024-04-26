@@ -74,4 +74,4 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
   5. Now you have a stable shell
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/69c9d560-27e9-415b-9dfb-890b9f950dd6)
 
-
++ Running Linpeas on the machine
