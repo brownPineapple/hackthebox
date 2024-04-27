@@ -75,3 +75,16 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/69c9d560-27e9-415b-9dfb-890b9f950dd6)
 
 + Running Linpeas on the machine
++ Found something in the logs
+```bash
+/var/log/apache2/backup:10.10.14.4 - - [05/Sep/2020:11:17:34 +2000] "POST /reset_password?email=Guitar123" 500 453 "http://doctor.htb/reset_password"
+```
++ Trying the password for shaun user
++ BOOM, we are user
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/6dc8a106-f03d-4179-8165-504fc8b7999d)
+
+### Privilege escalation
+
++ Remebering that splunk was running on the machine
++ Checking who is running splunk
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/e21dea3b-0b59-4aef-b05d-4695d319b512)
