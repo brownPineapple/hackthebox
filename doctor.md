@@ -81,10 +81,22 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 + Trying the password for shaun user
 + BOOM, we are user
+
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/6dc8a106-f03d-4179-8165-504fc8b7999d)
 
 ### Privilege escalation
 
-+ Remebering that splunk was running on the machine
++ Splunk is running on the machine 
 + Checking who is running splunk
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/e21dea3b-0b59-4aef-b05d-4695d319b512)
++ This can be a way to get root if splunk is vulnerable to code execution
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/d0e774cc-44e5-44ed-8bfa-8fc93accf825)
++ This seems pretty outdated, checking exploits online.
++ Found an exploit for this version called SplunkWhisperer2 - https://github.com/cnotin/SplunkWhisperer2.git
++ Running the exploit
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/3837527a-08c3-41ef-a979-ab7c8d316bf2)
++ We get authentication failure, since we have the creds from earlier enumeration, we can try the credentials
++ Adding a reverse shell payload from - https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/0acf874a-a1e3-44cc-9bd3-ce4591808089)
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/16999956-7a6a-4598-aa27-a1655be541cd)
++ PWNED !!!
