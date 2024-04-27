@@ -47,9 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 + Checking the source of /archive and found something interesting, it has xml output of the posts that we create. Checking for XXE and SSTI vulnerabilities.
 + TRYING SSTI hacktricks injection ```{{ 7*7 }}```, no success on the blog page
 + But we get 49 on the archive source ```view-source:http://doctors.htb/archive```
-
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/58379fa5-5355-4014-aec1-113cebd7ae90)
-
 + Testing multiple Server Side Template Injection from https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection/jinja2-ssti
 + **SUCCESS** We have successful SSTI
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/7da4af12-c81a-428f-81bd-7caedaf941ff)
@@ -77,7 +75,6 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
   4. On your host machine in the same session do ```stty raw -echo;fg``` + Enter + Enter
   5. Now you have a stable shell
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/69c9d560-27e9-415b-9dfb-890b9f950dd6)
-
 + Running Linpeas on the machine
 + Found something in the logs
 ```bash
@@ -85,7 +82,6 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 + Trying the password for shaun user
 + **BOOM**, we are user
-
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/6dc8a106-f03d-4179-8165-504fc8b7999d)
 
 ### Privilege escalation
