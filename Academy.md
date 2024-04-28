@@ -1,6 +1,6 @@
 # Hack The Box
 
-## Academy writeup
+## Academy writeup (No Screenshots)
 
 ### Enumeration
 
