@@ -5,56 +5,81 @@
 ### Guided mode
 
 Q. How many TCP ports are open on the remote host?
+
 ```A. 3```
+
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/6c76be3c-5b07-4dbb-885d-8259e0fc7d8e)
 
 Q. What application is running on TCP 8080? (One word)
+
 ```A. Tomcat```
 
 Q. Which link leads to the page containing the statement on recovering from the data breach?
+
 ```A. http://megahosting.htb/news.php?file=statement```
+
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/430bfdda-cfcd-401d-a342-ab1f48460e0f)
 
 Q. Which URL parameter of the ```news.php``` page is vulnerable to Local File Inclusion?
+
 ```A. file```
 
 Q. Which system user has user id 1000 on Tabby?
+
 ```A. ash```
 
 Q. What is the full path of Apache Tomcat's configuration file which contains a list of user names, roles, and passwords.
+
 ```A. /usr/share/tomcat9/etc/tomcat-users.xml```
 
 Q. What is the password of the Apache Tomcat user ```tomcat```?
+
 ```A. $3cureP4s5w0rd123!```
+
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/0cab503c-521e-4941-ae80-7b37ed41993b)
 
 Q. What is the path on the webserver that leads to the text interface of the Host Manager app of Apache Tomcat?
+
 ```A. /manager/text```
+
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/15e79cf5-97a5-4fdf-a332-89d301660b0a)
 
 Q. Which command is used in the text interface of the Host Manager app of Apache Tomcat to deploy a new application archive (WAR) remotely?
+
 ```A. deploy```
+
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/44556790-5b5a-4656-ab98-9547c08e3b89)
 
 Q. What is the password for the file 16162020_backup.zip?
+
 ```A. admin@it```
+
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/2633972e-d5ee-46f7-98d6-8773eb99d579)
 
 Q. Which interesting user group is the user ash a member of?
+
 ```A. lxd```
+
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/abb5c59d-cab3-429d-84b5-5223bde8a55b)
 
 > https://book.hacktricks.xyz/linux-hardening/privilege-escalation/interesting-groups-linux-pe/lxd-privilege-escalation
 
 Q. What is the command for listing the VM images present in lxd?
+
 ```A. lxc image list```
+
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/fc1e833b-2e51-4e0e-bbc9-24f8e0be91c3)
 
 Q. Which flag needs to be set as true in the lxc init command in order to force the container to interact as root with the host filesystem?
+
 ```A. security.privileged```
+
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/e57aa73e-45e2-4dcc-9fb2-a675aca0f6dd)
 
+
+
 ### Step by step guide
+
 
 1. We start with an nmap scan and discover http server running on port 80 and tomcat running on port 8080
 2. Checking the website we discover a LFI vulnerability on news.php?file=**statement**
