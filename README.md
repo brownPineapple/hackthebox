@@ -1,4 +1,4 @@
-# Hack The Box Writeups for retired machines
+# Hack The Box Writeups
 
 Trying guided mode.
 
