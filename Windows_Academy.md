@@ -1,4 +1,6 @@
-## Directory Enumeration - Boot partition structure - Enumeration/Recon
+# Windows Fundamentals - HTB Academy Notes
+
+## Directory Enumeration - Boot partition structure
 
 | Directory | Function |
 | --------- | -------- |
