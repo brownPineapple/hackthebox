@@ -1,3 +1,5 @@
+## Directory Enumeration - Boot partition structure - Enumeration/Recon
+
 | Directory | Function |
 | --------- | -------- |
 | Perflogs | Can hold Windows performance logs but is empty by default. |
@@ -11,3 +13,4 @@
 | Windows | The majority of the files required for the Windows operating system are contained here. |
 | System, System32, SysWOW64 | Contains all DLLs required for the core features of Windows and the Windows API. The operating system searches these folders any time a program asks to load a DLL without specifying an absolute path. |
 | WinSxS | The Windows Component Store contains a copy of all Windows components, updates, and service packs. |
+
