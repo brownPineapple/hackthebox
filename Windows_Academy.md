@@ -32,7 +32,8 @@ Inheritance settings in Windows
 
 ## Windows Registry
 
-Types of windows subkeys
+The Registry is a hierarchical database in Windows critical for the operating system. It stores low-level settings for the Windows operating system and applications that choose to use it. It is divided into computer-specific and user-specific data.
+The tree-structure consists of main folders (root keys) in which subfolders (subkeys) with their entries/files (values) are located. There are 11 different types of values that can be entered in a subkey.
 
 | Value	| Type | 
 |-------|------|
