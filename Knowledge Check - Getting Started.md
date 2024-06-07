@@ -81,3 +81,37 @@ delete all the php code from the default template and put the following code -
 ```
 
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/b7372da9-83ca-4572-8414-519e5dae9d94)
+
+After making the changes, copy the url mentioned in the same webpage, it should look something like ```http://gettingstarted.htb/theme/Innovation/template.php```
+If you are unable to visit this website make sure to edit the /etc/hosts file with the following command - sudo nano /etc/hosts
+It should open the hosts file and at the bottom of the file add the following 
+```bash
+10.129.42.249    gettingstarted.htb
+```
+
+We have code execution
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/9b24239d-3f83-4bbc-8bef-4a11166e2c41)
+
+Lets start up a ncat listener, you can also use nc
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/605147ff-77d5-4031-b0a8-bed22a78a4f8)
+
+We will use a bash reverse shell payload.
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/25922b82-8a6b-4280-98a8-8df73ef37a51)
+
+Save changes and refresh the theme/Innovation/template.php page
+We get a reverse shell, lets use python pty to stabilize the shell
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/00b94010-da73-41d5-84d1-45c48e3f05e5)
+
+Cool, now we can do Ctrl+c to stop processes and use Tab auto complete.
+We are logged in as www-data, lets see what the user can do, first things first lets check the kernel version and if we can run any commands using sudo.
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/a817684d-1c14-48ec-acb6-cfa632bd8822)
+
+Awesome, we can run ```/usr/bin/php``` using ```sudo``` without a password. Lets download a php reverse shell and place it under /tmp/
+We can run php commands using the command line using the -r option, lets try to get the id.
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/da61432c-4131-47e4-8d6b-fbe3ede7e949)
+
+PWN3D !!! I am ROOT !!!
+
+You can get the flags from ```/root/root.txt and /home/mrb3n/user.txt```
+
+Thanks for reading, if this helped you, please respect on HTB Labs - 
