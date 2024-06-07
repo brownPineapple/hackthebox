@@ -66,4 +66,18 @@ GENERATED WORDS: 4612
 We have an interesting directory /admin/
 The webpage gives us a login prompt, checking most common default credentials, admin:admin and we are in.
 At the bottom of the admin dashboard we can see that the webpage is running on - GetSimpleCMS 3.3.15
-There are a lot of explpiots availalbe online but we can try to manually exploit the
+There are a lot of explpiots availalbe online but we can try to get a shell by manual exploitation.
+
+One interesting thing I noticed the web page has is the theme module, we can edit themes which are a bunch of php files that can be run on the web server and they have no input sanitization and we can run the PHP system command.
+To get to the theme editing page follow the steps below:
+
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/6898f45a-250b-42f7-9ab6-3fb3e7af28cc)
+
+It should take you to the Innovation theme default template page,
+delete all the php code from the default template and put the following code -
+
+```bash
+<?php system ('id'); ?>
+```
+
+![image](https://github.com/brownPineapple/hackthebox/assets/30342446/b7372da9-83ca-4572-8414-519e5dae9d94)
