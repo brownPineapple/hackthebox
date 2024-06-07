@@ -1,6 +1,8 @@
-# Hack the Box Academy - Tier 1 Module
+# Hack the Box Academy
 
-## Getting started - Knowledge check - Final challenge write up
+### Getting started - Knowledge check
+
+### Final challenge write up
 
 ## Enumeration / Recon
 
@@ -98,7 +100,7 @@ It should open the hosts file and at the bottom of the file add the following
 We have code execution !!!
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/9b24239d-3f83-4bbc-8bef-4a11166e2c41)
 
-### Initial Foothold
+## Initial Foothold
 
 Lets start up a ncat listener, you can also use nc
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/605147ff-77d5-4031-b0a8-bed22a78a4f8)
@@ -115,7 +117,7 @@ We get a reverse shell, lets use python pty to stabilize the shell
 
 Cool, now we can do Ctrl+c to stop processes and use Tab auto complete.
 
-# Privilege Escalation
+## Privilege Escalation
 
 We are logged in as www-data, lets see what the user can do, first things first lets check the kernel version and if we can run any commands using sudo.
 
@@ -131,4 +133,4 @@ PWN3D !!! I am ROOT !!!
 
 You can get the flags from ```/root/root.txt and /home/mrb3n/user.txt```
 
-Thanks for reading, if this helped you, please respect on HTB Labs - 
+Thanks for reading, if this helped you, please respect on HTB Labs - https://app.hackthebox.com/profile/112146
