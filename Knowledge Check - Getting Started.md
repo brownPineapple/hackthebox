@@ -80,6 +80,8 @@ delete all the php code from the default template and put the following code -
 <?php system ('id'); ?>
 ```
 
+> NOTE: I lost access to the machine and had to spawn it again, please dont get confused if you see 2 different IPs.
+
 ![image](https://github.com/brownPineapple/hackthebox/assets/30342446/b7372da9-83ca-4572-8414-519e5dae9d94)
 
 After making the changes, copy the url mentioned in the same webpage, it should look something like ```http://gettingstarted.htb/theme/Innovation/template.php```
