@@ -259,11 +259,11 @@ It should generate a zip like this
 - run bloodhound 
 - drag and drop the zip file into bloodhound.
 
-We can run the query - 
+We can run the query - ```MATCH (m:User) RETURN m```
 and get all the users in the domain
 ![image](https://github.com/user-attachments/assets/55d93c78-81af-41c9-b47d-cf5425a09137)
 
-We dont see anything interesting here so moving on to LDAP
+We dont see anything interesting here so moving on.
 
 Manually enumerating things
 Findings
@@ -361,7 +361,8 @@ now lets upload Rubeus and the certificate pfx on the box and run Rubeus to give
 
 ```./Rubeus.exe asktgt /user:administrator /certificate:cert.pfx /getcredentials /show```
 
-And BOOM we get the admin hash
+And BOOM we get the admin hash - This can be abused using PTH
+
 ![image](https://github.com/user-attachments/assets/079b2251-ab78-4deb-8405-d65d5b508823)
 
 Now we can WinRM with the hash and grab the root.txt-
