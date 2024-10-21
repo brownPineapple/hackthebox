@@ -6,7 +6,7 @@ Initial foothold
 
 - Port 5000 running Python server with a website, upload and exploit cif file - 
 - Create a malicious file using the info in the link below
-- !(pymatgen - exploit)[https://github.com/materialsproject/pymatgen/security/advisories/GHSA-vgv8-5cpj-qj2f]
+- pymatgen used to parse the cif information - exploit - https://github.com/materialsproject/pymatgen/security/advisories/GHSA-vgv8-5cpj-qj2f
 
 Lateral movement 
 
