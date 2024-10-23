@@ -19,5 +19,5 @@ password reuse
 
 ### Privilege escalation
 
-pdftohtml to extract data from a pdf which contains root password
+poppler-utils - pdftohtml to extract data from a pdf which contains root password\n
 depix.py -> unpixelate images extracted from pdf
