@@ -115,3 +115,4 @@ and run john against rockyou wordlist and we get a password
 
 ![image](https://github.com/user-attachments/assets/1c114ae0-5f72-466b-8280-a1cc522c6d66)
 
+When trying to check smb and ldap credentials, we get a clock skew error, lets sync the clock with the machine to see if we can verify the credentials
