@@ -104,6 +104,8 @@ Lets run a script scan
 
 This seems interesting, we have a APACHE James Server, which is a mail transfer agent
 
+### Initial Foothold
+
 Checking on google we see root/root is the most common default credential, we can login, lets see how to exploit this
 
 ```
@@ -176,6 +178,8 @@ mindy@solidstate:~$ cat user.txt
 mindy@solidstate:~$
 ```
 
+### Lateral Movement
+
 Checking online on how to escape rbash with ssh found this interesting way to bypass the rbash by just adding a -t to the ssh command
 
 ```
@@ -189,6 +193,8 @@ ${debian_chroot:+($debian_chroot)}mindy@solidstate:~$ whoami
 mindy
 ${debian_chroot:+($debian_chroot)}mindy@solidstate:~$
 ```
+
+### Privilege Escalation
 
 Now we can run LinPEAS and other enum tools
 
@@ -259,3 +265,9 @@ PWNED
 
 
 *PS: This flag wont work for you as each machine generates a random flag on startup.*
+
+### Reference links
+- https://www.hackingarticles.in/multiple-methods-to-bypass-restricted-shell/
+- https://github.com/DominicBreuker/pspy
+- https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+
